@@ -3,18 +3,19 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* 줄 바꿈을 가능하게 함 */
 }
 
 .search-bar input {
-  width: 200px;
+  width: 250px; /* 입력 필드의 너비를 키움 */
   padding: 10px;
-  margin: 0 5px;
+  margin: 10px 5px; /* 간격 조정 */
   font-size: 16px;
 }
 
 .search-bar button {
   padding: 10px 20px;
-  margin-left: 10px;
+  margin: 10px 5px; /* 간격 조정 */
   font-size: 16px;
   cursor: pointer;
 }

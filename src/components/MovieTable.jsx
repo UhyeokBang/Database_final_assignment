@@ -9,6 +9,9 @@ const MovieTable = ({ movies, currentPage, moviesPerPage }) => {
   return (
     <div className="table-container">
       <div className="movie-table">
+        <div className="table-header">
+          <span>총 {movies.length}건의 검색 결과</span>
+        </div>
         <table>
           <thead>
             <tr>

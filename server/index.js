@@ -11,9 +11,9 @@ app.use(express.json());
 // MySQL 데이터베이스 연결 설정
 const db = mysql.createConnection({
   host: "localhost",
-  user: "root", // MySQL 사용자 이름
-  password: "password", // MySQL 비밀번호
-  database: "movie_db", // 데이터베이스 이름
+  user: "uhyeok1", // MySQL 사용자 이름
+  password: "0000", // MySQL 비밀번호
+  database: "moviedb", // 데이터베이스 이름
 });
 
 db.connect((err) => {

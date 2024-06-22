@@ -1,10 +1,18 @@
 .table-container {
   display: flex;
   justify-content: center;
+  flex-direction: column; /* 테이블과 헤더를 수직으로 정렬 */
+  align-items: center; /* 가운데 정렬 */
 }
 
 .movie-table {
-  width: 80%; /* 테이블의 너비를 조정할 수 있습니다 */
+  width: 90%; /* 테이블의 너비를 조정할 수 있습니다 */
+}
+
+.table-header {
+  text-align: left; /* 왼쪽 정렬 */
+  margin-bottom: 10px; /* 테이블과 간격 */
+  font-size: 1rem; /* 폰트 크기 */
 }
 
 .movie-table table {
@@ -34,8 +42,8 @@
 
 .movie-table .col-movie-name,
 .movie-table .col-movie-name-eng {
-  min-width: 250px; /* 최소 너비 */
-  max-width: 300px; /* 최대 너비 */
+  min-width: 300px; /* 최소 너비 */
+  max-width: 400px; /* 최대 너비 */
 }
 
 .movie-table .col-production-year {
