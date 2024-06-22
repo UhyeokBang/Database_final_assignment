@@ -15,7 +15,7 @@ const MovieTable = ({ movies, currentPage, moviesPerPage }) => {
             <th>제작연도</th>
             <th>제작국가</th>
             <th>유형</th>
-            <th>장르</th> {/* 장르 컬럼 추가 */}
+            <th>장르</th>
             <th>제작상태</th>
             <th>감독</th>
             <th>제작사</th>
@@ -29,7 +29,7 @@ const MovieTable = ({ movies, currentPage, moviesPerPage }) => {
               <td>{movie.Production_year}</td>
               <td>{movie.Production_country}</td>
               <td>{movie.Type}</td>
-              <td>{movie.Genres}</td> {/* 장르 데이터 추가 */}
+              <td>{movie.Genres}</td>
               <td>{movie.Production_status}</td>
               <td>{movie.Directors}</td>
               <td>{movie.Production_company}</td>
