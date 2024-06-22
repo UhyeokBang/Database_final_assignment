@@ -35,6 +35,7 @@ const App = () => {
   }, []);
 
   const handleSearch = () => {
+    setCurrentPage(1);
     fetchMovies();
   };
 
