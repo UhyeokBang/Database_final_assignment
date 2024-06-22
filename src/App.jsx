@@ -1,35 +1,64 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import SearchBar from "./components/SearchBar";
+import MovieTable from "./components/MovieTable";
+import Pagination from "./components/Pagination";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [searchParams, setSearchParams] = useState({
+    title: "",
+    director: "",
+    yearFrom: "",
+    yearTo: "",
+  });
+  const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [moviesPerPage] = useState(10);
+
+  const fetchMovies = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/movies?title=${searchParams.title}&director=${searchParams.director}&yearFrom=${searchParams.yearFrom}&yearTo=${searchParams.yearTo}`
+      );
+      const data = await response.json();
+      console.log("Fetched Movies:", data); // 응답 데이터를 확인합니다.
+      setMovies(data);
+      setFilteredMovies(data);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
+  const handleSearch = () => {
+    fetchMovies();
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="app">
+      <h1>Movie Search</h1>
+      <SearchBar
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+        handleSearch={handleSearch}
+      />
+      <MovieTable
+        movies={filteredMovies}
+        currentPage={currentPage}
+        moviesPerPage={moviesPerPage}
+      />
+      <Pagination
+        totalMovies={filteredMovies.length}
+        moviesPerPage={moviesPerPage}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+      />
+    </div>
+  );
+};
 
-export default App
+export default App;
