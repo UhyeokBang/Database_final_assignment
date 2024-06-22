@@ -11,12 +11,31 @@ const Pagination = ({
     pageNumbers.push(i);
   }
 
+  const totalPageNumbers = pageNumbers.length;
+  const maxPageButtons = 10;
+  const currentSection = Math.ceil(currentPage / maxPageButtons);
+  const startPage = (currentSection - 1) * maxPageButtons + 1;
+  const endPage = Math.min(startPage + maxPageButtons - 1, totalPageNumbers);
+
+  const handleNextSection = () => {
+    const nextSectionPage = startPage + maxPageButtons;
+    setCurrentPage(Math.min(nextSectionPage, totalPageNumbers));
+  };
+
+  const handlePreviousSection = () => {
+    const prevSectionPage = startPage - maxPageButtons;
+    setCurrentPage(Math.max(prevSectionPage, 1));
+  };
+
   return (
     <div className="pagination">
-      <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}>
+      <button
+        onClick={handlePreviousSection}
+        disabled={currentPage <= maxPageButtons}
+      >
         &laquo;
       </button>
-      {pageNumbers.map((number) => (
+      {pageNumbers.slice(startPage - 1, endPage).map((number) => (
         <button
           key={number}
           onClick={() => setCurrentPage(number)}
@@ -26,9 +45,8 @@ const Pagination = ({
         </button>
       ))}
       <button
-        onClick={() =>
-          setCurrentPage((prev) => Math.min(prev + 1, pageNumbers.length))
-        }
+        onClick={handleNextSection}
+        disabled={currentPage > totalPageNumbers - maxPageButtons}
       >
         &raquo;
       </button>
