@@ -1,0 +1,52 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-table {
+  width: 80%; /* 테이블의 너비를 조정할 수 있습니다 */
+}
+
+.movie-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* 각 열의 너비를 고정 */
+}
+
+.movie-table th,
+.movie-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center; /* 텍스트를 가운데 정렬 */
+  font-size: 0.9rem; /* 글자 크기 작게 설정 */
+}
+
+.movie-table th {
+  background-color: #f2f2f2;
+  text-align: center;
+}
+
+.movie-table td {
+  text-align: center;
+  white-space: normal; /* 여러 줄로 표시 */
+  overflow: visible; /* 넘치는 텍스트 표시 */
+}
+
+.movie-table .col-movie-name,
+.movie-table .col-movie-name-eng {
+  min-width: 250px; /* 최소 너비 */
+  max-width: 300px; /* 최대 너비 */
+}
+
+.movie-table .col-production-year {
+  width: 5%; /* 제작연도 열의 너비 */
+}
+
+.movie-table .col-production-country,
+.movie-table .col-type,
+.movie-table .col-genres,
+.movie-table .col-production-status,
+.movie-table .col-directors,
+.movie-table .col-production-company {
+  width: 10%; /* 나머지 열의 너비 */
+}
