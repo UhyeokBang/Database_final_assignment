@@ -50,12 +50,12 @@ app.get("/api/movies", (req, res) => {
 
   if (title) {
     query += " AND Movie.Movie_name LIKE ?";
-    params.push(`${title}%`);
+    params.push(`%${title}%`);
   }
 
   if (director) {
     query += " AND Director.Director_name LIKE ?";
-    params.push(`${director}%`);
+    params.push(`%${director}%`);
   }
 
   if (yearFrom) {
